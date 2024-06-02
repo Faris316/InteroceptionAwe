@@ -68,40 +68,99 @@
         //     post_trial_gap: 500,
         // }
 
-        var demographic_questionnaire = {
-            type: jsPsychSurveyMultiChoice,
-            data: { screen: "demographic_questions" },
-            questions: [
-                {
-                    prompt: "What is your age?",
-                    options: [
-                        "Under 18",
-                        "18-24",
-                        "25-34",
-                        "35-44",
-                        "45-54",
-                        "55-64",
-                        "65 or older",
-                    ],
-                },
-                {
-                    prompt: "What is your gender?",
-                    options: ["Male", "Female", "Other", "Prefer not to say"],
-                },
-                {
-                    prompt: "What is your highest level of education?",
-                    options: [
-                        "High school or less",
-                        "Some college",
-                        "Bachelor's degree",
-                        "Master's degree",
-                        "Doctorate",
-                        "Other",
-                    ],
-                },
+        //var demographic_questionnaire = {
+          //  type: jsPsychSurveyMultiChoice,
+          //  data: { screen: "demographic_questions" },
+          //  questions: [
+           //     {
+           //         prompt: "What is your age?",
+           //         options: [
+           //             "Under 18",
+           //             "18-24",
+           //             "25-34",
+            //            "35-44",
+               //         "45-54",
+                //        "55-64",
+                //        "65 or older",
+                //    ],
+               // },
+               // {
+                //    prompt: "What is your gender?",
+                //    options: ["Male", "Female", "Other", "Prefer not to say"],
+              //  },
+              //  {
+                //    prompt: "What is your highest level of education?",
+                 //   options: [
+                  //      "High school or less",
+                   //     "Some college",
+                    //    "Bachelor's degree",
+                    //    "Master's degree",
+                     //   "Doctorate",
+                     //   "Other",
+                  //  ],
+             //   },
+          //  ],
+       // }
+      //  timeline.push(demographic_questionnaire)
+
+        var demographics_multichoice = {
+    type: jsPsychSurveyMultiChoice,
+    preamble: "<b>Please answer the following questions:</b>",
+    questions: [
+        {
+            prompt: "What is your gender?",
+            options: ["Male", "Female", "Other"],
+            name: "gender",
+        },
+        // {
+        //     prompt: "Are you currently a student?",
+        //     options: ["Yes", "No"],
+        //     name: "student",
+        // },
+        {
+            prompt: "What is your highest completed education level?",
+            options: [
+                "University (doctorate)",
+                "University (master) <sub><sup>or equivalent</sup></sub>",
+                "University (bachelor) <sub><sup>or equivalent</sup></sub>",
+                "High school",
+                "Other",
             ],
-        }
-        timeline.push(demographic_questionnaire)
+            name: "education",
+        },
+        // {
+        //     prompt: "English level",
+        //     options: ["native", "fluent", "intermediate", "beginner"],
+        //     name: "english",
+        // },
+    ],
+    data: {
+        screen: "demographics_1",
+    },
+}
+
+var demographics_freetext = {
+    type: jsPsychSurveyText,
+    questions: [
+        {
+            prompt: "Please enter your age (in years)",
+            placeholder: "e.g., '31'",
+            name: "age",
+        },
+        {
+            prompt: "Please enter your ethnicity",
+            placeholder: "e.g., Caucasian",
+            name: "ethnicity",
+        },
+    ],
+    data: {
+        screen: "demographics_2",
+    },
+}
+
+var demographics_info = {
+    timeline: [demographics_multichoice, demographics_freetext],
+}
 
         var bhs_questionnaire = {
             type: jsPsychSurveyMultiChoice,
@@ -225,6 +284,7 @@
             button_label: "Next",
             randomize_question_order: true,
             randomize_choices: true,
+            name: "BHS Questionnaire",
         }
 
         var rrs_questionnaire = {
@@ -369,6 +429,7 @@
             preamble:
                 "<p>Ruminative Response Scale (RRS): Please rate how frequently you respond in the following ways.</p>",
             button_label: "Next",
+            name: "RRS Questionnaire",
         }
 
         var awe_experience_questionnaire = {
@@ -738,6 +799,7 @@
             preamble:
                 "<p>Awe-experience scale (AWE-S): Please rate your experience of awe during the video.</p>",
             button_label: "Next",
+            name: "Awe Questionnaire",
         }
 
         var interoception_questionnaire = {
@@ -900,6 +962,7 @@
             preamble:
                 "<p>Self-transcendence scale (STS): Please rate how often you experience certain thoughts, feelings, and behaviors.</p>",
             button_label: "Finish",
+            name: "STS Questionnaire",
         }
 
         // // Save data via DataPipe
